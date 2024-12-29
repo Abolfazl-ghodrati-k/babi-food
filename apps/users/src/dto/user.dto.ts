@@ -17,11 +17,22 @@ export class RegisterDto {
   @IsNotEmpty({ message: 'Email is required.' })
   @IsEmail({}, { message: 'Email is Invalid.' })
   email: string;
-  
+
   @Field()
-  @IsNotEmpty({ message: 'PhoneNumber is required.' })
-  @IsEmail({}, { message: 'PhoneNumber is Invalid.' })
+  @IsNotEmpty({ message: 'Phone Number is required.' })
+  @IsEmail({}, { message: 'Phone Number is Invalid.' })
   phone_number: number;
+}
+
+@InputType()
+export class ActivationDto {
+  @Field()
+  @IsNotEmpty({ message: 'Activation Code is required' })
+  activationCode: string;
+
+  @Field()
+  @IsNotEmpty({ message: 'Activation Token is required' })
+  activationToken: string;
 }
 
 @InputType()
@@ -35,4 +46,3 @@ export class LoginDto {
   @IsEmail({}, { message: 'Email is Invalid.' })
   email: string;
 }
-

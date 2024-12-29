@@ -7,9 +7,14 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(UsersModule);
 
   app.useStaticAssets(join(__dirname, '..', 'public'));
-  app.setBaseViewsDir(join(__dirname, '..', './email-templates'))
+  //app.setBaseViewsDir(join(__dirname, '..','..', 'food-service/'))
+
+  app.enableCors({
+    origin: '*',
+  });
 
   app.setViewEngine('ejs')
+
   await app.listen(process.env.port ?? 3001);
 }
 bootstrap();
